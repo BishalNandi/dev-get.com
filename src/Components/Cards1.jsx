@@ -19,7 +19,7 @@ const Cards1 = () => {
 
         </div>
                  
-        
+        <hr className="border-2 bg-green-500"/>
         
         </>
     )

@@ -44,7 +44,7 @@ const Cards2 = () => {
         </div>
 
         </div>
-    )
+    
 
 
         </div>
