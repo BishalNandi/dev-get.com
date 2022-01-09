@@ -11,7 +11,7 @@ const Search = () => {
             
             <img className='h-20 m-6' src="./images/react.png" alt='error loading'/>
             
-            <h2 className=' bg-cyan-300 text-center pb-2 hover:bg-gray-200 transition-all duration-500 text-black cursor-pointer px-2'>React Developer</h2>
+            <h2 className=' bg-white text-center pb-2 hover:bg-gray-200 transition-all duration-500 text-black cursor-pointer px-2'>React Developer</h2>
 
         </div>
 

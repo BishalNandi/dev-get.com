@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Body = () => {
+const Firstsection = () => {
     return (
         
 
@@ -46,4 +46,4 @@ const Body = () => {
     )
 }
 
-export default Body
+export default Firstsection;

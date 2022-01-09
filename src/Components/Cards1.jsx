@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Cards = () => {
+const Cards1 = () => {
     return (
         <>
         <hr className="border-2 bg-green-500"/>
@@ -25,4 +25,4 @@ const Cards = () => {
     )
 }
 
-export default Cards;
+export default Cards1;

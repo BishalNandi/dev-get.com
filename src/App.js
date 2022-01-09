@@ -1,9 +1,9 @@
 import './App.css';
 import Header from './Components/Header';
-import Body from './Components/Body';
-import Cards from './Components/Cards';
+import Firstsection from './Components/Firstsection';
+import Cards1 from './Components/Cards1';
 import Search from './Components/Search';
-import Popularproject from './Components/Popularproject';
+import Cards2 from './Components/Card2';
 
 
 function App() {
@@ -11,10 +11,10 @@ function App() {
     <>
     
     <Header/>
-    <Body/>
-    <Cards/>
+    <Firstsection/>
+    <Cards1/>
     <Search/>
-    <Popularproject/>
+    <Cards2/>
     
     
     </>
