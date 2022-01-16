@@ -1,15 +1,17 @@
 *{
-  margin: 0;
-  padding: 0;
-  
-  font-family: 'Nunito', sans-serif;
-  
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-/* h1{
-  font-family: 'Moon Dance';
+.signup{
+    border-radius: 3px solid red;
 }
 
-p{
-  font-family: 'Vujahday Script', cursive;
-} */
+.form-title{
+    margin-left: 10em;
+}
+
+.register-form{
+    border: 2px solid gray;
+}
