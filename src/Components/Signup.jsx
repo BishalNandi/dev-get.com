@@ -1,85 +1,150 @@
-import React from 'react'
-import { NavLink } from 'react-router-dom/cjs/react-router-dom.min'
+import React, {useState}  from 'react';
+import { NavLink, useHistory } from 'react-router-dom';
+// import signpic from "../images/signup.svg";
 
 const Signup = () => {
+    const history = useHistory();
+    const [user, setUser] = useState({
+        name: "", email: "", phone: "", work: "", password: "", cpassword: ""
+    });
+
+    let name, value;
+
+    const handleInputs = (e) => {
+        console.log(e);
+        name = e.target.name;
+        value = e.target.value;
+        
+        setUser({...user, [name]:value});
+    }
+
+
+    const PostData = async (e) => {
+        e.preventDefault();
+
+        const { name, email, phone, work, password, cpassword } = user;
+
+        const res = await fetch("/register", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                name, email, phone, work, password, cpassword
+            })
+        });
+
+        const data = await res.json();
+
+        // I need to change the data to res 
+        if (data.status === 422 || !data) {
+            window.alert("INvalid Registration");
+            console.log("INvalid Registration");
+        } else {
+             window.alert(" Registration Successfull");
+            console.log("Successfull Registration");
+
+            history.push("/login");
+        }
+    }
+
+
     return (
-        <section className='px-4 py-2'>
-        <div className='px-60 py-4'>
-            <div className='px-10 py-8'>
-                <div className='signup-form'>
-                <h2 className='text-blue-200 '>Sign up<hr/></h2>
-                <form className="register-form" id='register-form'>
-        
-        {/* DIV'S OF SIGNUP PAGE STARTS HERE  */}
+        <>
+            <section className="signup">
+                <div className="container mt-5">
+                    <div className="signup-content">
+                        <div className="signup-form">
+                            <h2 className="form-title">Sign up</h2>
+                            <form method="POST" className="register-form" id="register-form">
+                                
+                                <div className="form-group">
+                                    <label htmlFor="name">
+                                        <i className="zmdi zmdi-account material-icons-name"></i>
+                                    </label>
+                                    <input type="text" name="name" id="name" autocomplete="off"
+                                        value={user.name}
+                                        onChange={handleInputs}
+                                        placeholder="Your Name"
+                                    />
+                                </div>
 
-                    <div className='border-2 px-2'>
-                        <label htmlFor="name">
-                        <i class= " zmdi zmdi-account"></i>
-                        </label>
-                        <input className='px-2' type="text" name="name" id="name" autoComplete="off" placeholder="Your Name"/>
+                                 <div className="form-group">
+                                    <label htmlFor="email">
+                                        <i className="zmdi zmdi-email material-icons-name"></i>
+                                    </label>
+                                    <input type="email" name="email" id="email" autoComplete="off"
+                                        value={user.email}
+                                        onChange={handleInputs}
+                                        placeholder="Your Email"
+                                    />
+                                </div>
+
+                                 <div className="form-group">
+                                    <label htmlFor="phone">
+                                        <i className="zmdi zmdi-phone-in-talk material-icons-name"></i>
+                                    </label>
+                                    <input type="number" name="phone" id="phone" autoComplete="off"
+                                        value={user.phone}
+                                        onChange={handleInputs}
+                                        placeholder="Your Phone"
+                                    />
+                                </div>
+
+                                 <div className="form-group">
+                                    <label htmlFor="work">
+                                        <i className="zmdi zmdi-slideshow material-icons-name"></i>
+                                    </label>
+                                    <input type="text" name="work" id="work" autoComplete="off"
+                                        value={user.work}
+                                        onChange={handleInputs}
+                                        placeholder="Your Profession"
+                                    />
+                                </div>
+
+                                 <div className="form-group">
+                                    <label htmlFor="password">
+                                        <i className="zmdi zmdi-lock material-icons-name"></i>
+                                    </label>
+                                    <input type="password" name="password" id="password" autoComplete="off"
+                                        value={user.password}
+                                        onChange={handleInputs}
+                                        placeholder="Your Password"
+                                    />
+                                </div>
+
+                                <div className="form-group">
+                                    <label htmlFor="cpassword">
+                                        <i className="zmdi zmdi-lock material-icons-name"></i>
+                                    </label>
+                                    <input type="password" name="cpassword" id="cpassword" autoComplete="off"
+                                        value={user.cpassword}
+                                        onChange={handleInputs}
+                                        placeholder="Confirm Your Password"
+                                    />
+                                </div>
+                               
+                                <div className="form-group form-button">
+                                    <input type="submit" name="signup" id="signup" className="form-submit"
+                                        value="register" onClick={PostData}
+                                     
+                                    />
+                                </div>
+
+                            </form>
+                        </div>
+                        
+                            <div className="signup-image">
+                                <figure>
+                                    {/* <img src={signpic} alt="registration pic" /> */}
+                                </figure>
+                                <NavLink to="/login" className="signup-image-link">I am already register</NavLink>
+                            </div>
+                       
                     </div>
-
-
-                    <div className='border-2'>
-                        <label htmlFor="email">
-                        <i class="zmdi zmdi-email"></i>
-                        </label>
-                        <input className='px-2' type="email" name="email" id="email" autoComplete="off" placeholder="Your Email"/>
-                    </div>
-
-
-                    <div className='border-2'>
-                        <label htmlFor="phone">
-                        <i class="zmdi zmdi-phone"></i>
-                        </label>
-                        <input className='px-2' type="phone" name="phone" id="phone" autoComplete="off" placeholder="Your phone"/>
-                    </div>
-
-
-                    <div className='border-2'>
-                        <label htmlFor="work">
-                        <i class="zmdi zmdi-slideshow"></i>
-                        </label>
-                        <input className='px-2' type="text" name="work" id="work" autoComplete="off" placeholder="Your Profession"/>
-                    </div>
-
-
-                    <div className='border-2'>
-                        <label htmlFor="password">
-                        <i class="zmdi zmdi-lock"></i>
-                        </label>
-                        <input className='px-2' type="password" name="password" id="password" autoComplete="off" placeholder="Your Password"/>
-                    </div>
-
-                    <div className='border-2'>
-                        <label htmlFor="cpassword">
-                        <i class="zmdi zmdi-lock"></i>
-                        </label>
-                        <input className='px-2' type="cpassword" name="cpassword" id="cpassword" autoComplete="off" placeholder="Confirm Your Password"/>
-                    </div>
-
-                    <div className=" text-blue-300 p-3">
-                        <input className='px-2' type="submit" name="signup" id="signup" className="form-submit" value="Register"/>
-                    </div>
-
-                </form>
                 </div>
-
-        <div className='signup-image'>
-            <figure>
-                {/* <img src="#" alt="registration pic" /> */}
-            </figure>
-            <NavLink to="/login" className="signup-image-link">I am already registered</NavLink>
-        </div>
-
-            </div>
-        
-</div>
-
-
-    </section>
-
-
+           </section>
+        </>
     )
 }
 

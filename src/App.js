@@ -1,4 +1,9 @@
 import './App.css';
+import React, {useReducer, createContext} from 'react'
+import { Route, Switch } from "react-router-dom";
+import 'bootstrap/dist/css/bootstrap.css';
+import { initialState, reducer } from "./reducer/UseReducer";
+
 // import Header from './Components/Header';
 // import Firstsection from './Components/Firstsection';
 // import Cards1 from './Components/Cards1';
@@ -7,22 +12,30 @@ import './App.css';
 // import Secondsection from './Components/Secondsection';
 import Footer from './Components/Footer';
 import Navbar from './Components/Navbar';
-import { Route } from "react-router-dom";
+// import { Route } from "react-router-dom";
 import Home from './Components/Home';
 import About from './Components/About';
 import Contact from './Components/Contact';
 import Login from './Components/Login';
 import Signup from './Components/Signup';
 import Registration from './Components/Registration';
+import Project from './Components/Project';
+import Changing from './Components/Changing';
+import Logout from './Components/Logout';
+import Errorpage from './Components/Errorpage'
+export const UserContext = createContext();
 
-function App() {
+
+const Routing =() => {
+
   return (
     <>
     
-    <Navbar/>
     
+    <Switch>
     <Route exact path="/">
       <Home/>
+      <Changing/>
     </Route>
 
     <Route path="/about">
@@ -33,6 +46,10 @@ function App() {
       <Contact/>
     </Route>
 
+    <Route path="/project">
+      <Project/>
+    </Route>
+    
     <Route path="/login">
       <Login/>
     </Route>
@@ -45,14 +62,39 @@ function App() {
       <Registration/>
     </Route>
 
-    {/* <Firstsection/> */}
-    {/* <Cards1/> */}
-    {/* <Search/> */}
-    {/* <Cards2/> */}
-    {/* <Secondsection/> */}
+ <Route path="/logout">
+        <Logout />
+      </Route>
+    
+
+<Route>
+        <Errorpage />
+      </Route>
+    </Switch>
+    
+   
+    
     <Footer/>
     </>
-  );
+  )
 }
+
+const App = () => {
+
+  //* we use useReducer
+  const [state, dispatch] = useReducer(reducer, initialState);
+
+  return (
+   
+      <UserContext.Provider value={{state, dispatch}}>
+        
+        <Navbar />
+        <Routing />
+        
+
+      </UserContext.Provider>
+  )
+}
+
 
 export default App;

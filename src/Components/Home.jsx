@@ -1,11 +1,12 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom'
 
 const Home = () => {
     return (
        <>
     {/* FIRST SECTION    */}
 
-    <main className='bg-gray-100 flex'>
+    <main className='bg-gray-100 flex text-black w-full'>
                 <div className='main py-8 px-20'>
                 Find a Perfect   <br />
                     <div className=' py-2 text-4xl'>
@@ -13,14 +14,31 @@ const Home = () => {
                     </div>
                     <p>A central location to find coders, Collab <br />and work on projects.An open platform <br />to get access  to mini projects,source code,<br />notes and weekly doubt clearing sessions.<br /> Also enroll for Internships and certificate courses!</p>
                     <div className='my-4'>
-                        <button className='px-5 py-1 rounded-md shadow-md bg-blue-700 space-x-2 mx-2 text-white border-4 hover:text-indigo-50 '>Hire ProjectPartner</button>
-                        
-                        <button className='px-5 py-1 rounded-md text-violet-700 border-2 mx-2 border-pink-400  hover:bg-violet-500 hover:text-white'>Explore Works</button>
-                    </div>
-                </div>
 
-            <div className='flex items-center'>
-            <img className="" src="./images/dev1.jpg" alt="error loading" />
+                    <button className='px-2 mx-4 py-1 rounded-md text-violet-700 border-2  border-pink-400  hover:bg-violet-500 hover:text-white'><NavLink className="nav-link" to="/">Hire Project Partner</NavLink></button>
+
+
+                        {/* <button className='px-5 py-1 rounded-md shadow-md bg-blue-700 space-x-2 mx-2 text-white border-4 hover:text-indigo-50 '>Hire ProjectPartner</button> */}
+                        
+                        <button className='px-2 mx-6 py-1 rounded-md text-violet-700 border-2  border-pink-400  hover:bg-violet-500 hover:text-white'><NavLink className="nav-link" to="/project">Explore Projects</NavLink></button>
+                        {/* <button className='px-5 py-1 rounded-md text-violet-700 border-2 mx-2 border-pink-400  hover:bg-violet-500 hover:text-white'>Explore Works</button> */}
+                        
+
+                        <marquee className='m-4 text-green-600'>EXPLORE THE PROJECTS ~ GET SOURCE-CODE ~ NOTES ~ ENROLL IN WEEKLY DOUBT CLEARING SESSIONS  <button className='space-x-8 text-blue-600 underline'>Knowmore</button></marquee>
+
+                        <h3 className='changingtwo'> Get access to mini projects like : <span class="change_content"></span></h3>
+                    </div>
+                    <div>
+ 
+          </div>
+          <h3 className='changing'>COLLABORATE,&nbsp; LEARN &&nbsp; GROW</h3>
+        
+                </div>
+               
+       
+
+            <div className='flex items-right'>
+            <img className="w-full border-gray-100 h-screen" src="./images/19.jpg" alt="error loading" />
             </div>
             </main>
 

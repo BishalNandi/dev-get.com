@@ -1,55 +1,97 @@
-import React from 'react'
+import React, {useState, useContext} from 'react';
+// import loginpic from "../images/login.svg";
+import { NavLink, useHistory } from "react-router-dom";
+
+import {UserContext} from "../App";
 
 const Login = () => {
+    const { state, dispatch } = useContext(UserContext);
+    
+    const history = useHistory();
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+
+    const loginUser = async (e) => {
+        e.preventDefault();
+
+        const res = await fetch('/signin', {
+            method:"POST",
+            headers:{
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                email,
+                password
+            })
+        });
+
+        const data = res.json();
+
+        if (res.status === 400 || !data) {
+            window.alert("Invalid Credentials");
+        } else {
+            dispatch({ type: 'USER', payload: true });
+            window.alert("Login Successfull");
+            history.push("/");
+        }
+    }
+
     return (
-       <>
+        <>
+             <section className="sign-in">
+                <div className="container mt-5">
+                    <div className="signin-content">
+                          
+                            <div className="signin-image">
+                                <figure>
+                                    {/* <img src={loginpic} alt="Login pic" /> */}
+                                </figure>
+                                <NavLink to="/signup" className="signup-image-link">Create an Account</NavLink>
+                            </div>
+                       
+                        <div className="signin-form">
+                            <h2 className="form-title">Sign up</h2>
+                            <form method="POST" className="register-form" id="register-form">
+                             
 
-              {/* <img
-      src="./images/wave.png"
-      className="fixed hidden lg:block inset-0 h-full"
-      style="z-index: -1;"
-    /> */}
-    <div
-      className="w-screen h-screen flex flex-col justify-center items-center lg:grid lg:grid-cols-2"
-    >
-      <img
-        src="./images/unlock.svg"
-        className="hidden lg:block w-1/2 hover:scale-150 transition-all duration-500 transform mx-auto"
-      />
-      <form className="flex flex-col justify-center items-center w-1/2">
-        <img src="./images/avatar.svg" className="w-32" />
-        <h2
-          className="my-8 font-display font-bold text-3xl text-gray-700 text-center"
-        >
-          Welcome to you
-        </h2>
-        <div class="relative">
-          <i class="fa fa-user absolute text-primarycolor text-xl"></i>
-          <input
-            type="text"
-            placeholder="username"
-            class="pl-8 border-b-2 font-display focus:outline-none focus:border-primarycolor transition-all duration-500 capitalize text-lg"
-          />
-        </div>
-        <div class="relative mt-8">
-          <i class="fa fa-lock absolute text-primarycolor text-xl"></i>
-          <input
-            type="password"
-            placeholder="password"
-            class="pl-8 border-b-2 font-display focus:outline-none focus:border-primarycolor transition-all duration-500 capitalize text-lg"
-          />
-          <button className='mt-2 py-2 px-24 bg-gray-200 border-2'>Login</button>
-        </div>
-        <a href="#" class="self-end mt-4 text-gray-600 font-bold"
-          >Forgot password?</a
-        >
-        
-       
-      </form>
-    </div>
+                                 <div className="form-group">
+                                    <label htmlFor="email">
+                                        <i className="zmdi zmdi-email material-icons-name"></i>
+                                    </label>
+                                    <input type="email" name="email" id="email" autoComplete="off"
+                                        value={email}
+                                        onChange={(e) => setEmail(e.target.value)}
+                                        placeholder="Your Email"
+                                    />
+                                </div>
 
 
-        </>
+                                 <div className="form-group">
+                                    <label htmlFor="password">
+                                        <i className="zmdi zmdi-lock material-icons-name"></i>
+                                    </label>
+                                    <input type="password" name="password" id="password" autoComplete="off"
+                                        value={password}
+                                        onChange={(e) => setPassword(e.target.value)}
+                                        placeholder="Your Password"
+                                    />
+                                </div>
+
+                              
+                                <div className="form-group form-button">
+                                    <input type="submit" name="signin" id="signin" className="form-submit"
+                                        value="Log In"
+                                        onClick={loginUser}
+                                    />
+                                </div>
+
+                            </form>
+                        </div>
+                      
+                    </div>
+                </div>
+           </section>
+       </>
     )
 }
 

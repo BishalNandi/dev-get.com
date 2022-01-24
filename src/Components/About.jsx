@@ -1,6 +1,6 @@
 import React, {useEffect, useState}  from 'react'
-// import thapapic from "../images/wave.png";
-// import aboutpic from "../images/wave.png";
+// import thapapic from "../images/thapa1.png";
+// import aboutpic from "../images/aboutpic.png";
 
 import { useHistory } from "react-router-dom";
 
