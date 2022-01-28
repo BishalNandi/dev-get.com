@@ -20,7 +20,8 @@ import Login from './Components/Login';
 import Signup from './Components/Signup';
 import Registration from './Components/Registration';
 import Project from './Components/Project';
-import Changing from './Components/Changing';
+import Animationlogo from './Components/Animationlogo';
+// import Changing from './Components/Changing';
 import Logout from './Components/Logout';
 import Errorpage from './Components/Errorpage'
 export const UserContext = createContext();
@@ -35,7 +36,8 @@ const Routing =() => {
     <Switch>
     <Route exact path="/">
       <Home/>
-      <Changing/>
+      <Animationlogo/>
+      {/* <Changing/> */}
     </Route>
 
     <Route path="/about">
@@ -72,7 +74,7 @@ const Routing =() => {
       </Route>
     </Switch>
     
-   
+  
     
     <Footer/>
     </>

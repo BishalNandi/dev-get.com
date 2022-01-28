@@ -63,7 +63,7 @@ import React, {useContext} from 'react'
 import 'bootstrap/dist/css/bootstrap.css'
 import { NavLink } from 'react-router-dom'
 import {UserContext} from "../App";
-import logo from '../Images/logo.jpeg'
+// import logo from '../Images/logo.jpeg'
 
 const Navbar = () => {
     const { state, dispatch } = useContext(UserContext);
@@ -124,9 +124,29 @@ const Navbar = () => {
 	return(
                <>
 			
-            <nav className="navbar navbar-expand-lg navbar-light bg-warning border-2 border-orange-300  shadow-2xl ">
+            <nav className="  navbar navbar-expand-lg navbar-light bg-warning border-8 border-orange-300  shadow-2xl p-2 ">
                     <NavLink className="navbar-brand" to="#">
-                        <img className='w-20 rounded-lg p-2 ' src={logo} alt="logo" />
+                        {/* <img className='w-20 rounded-lg p-2 ' src={logo} alt="logo" /> */}
+
+                        <body className='mainbody'>
+<h1 className='animate '>
+			<span>D</span>
+            <span>e</span>
+            <span>v</span>
+            <span>-</span>
+            <span>G</span>
+            <span>e</span>
+            <span>t</span>
+            <span>.</span>
+            <span>C</span>
+            <span>o</span>
+            <span>m 🌱</span>
+            
+           
+		</h1>
+        </body>
+
+
             </NavLink>
             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span className="navbar-toggler-icon"></span>
